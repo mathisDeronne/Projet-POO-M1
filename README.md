@@ -23,3 +23,7 @@ pip install --upgrade "chronobio[dev]"
 .\venv\Scripts\python.exe -m chronobio.viewer -p 12345
 
 .\venv\Scripts\python.exe -m '"nom de notre progrmme.PY' -p 12345
+
+## Règles et sources
+
+https://github.com/vpoulailleau/chronobio
