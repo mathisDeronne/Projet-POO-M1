@@ -125,12 +125,6 @@ class PlayerGameClient(Client):
                 self.add_command("0 LICENCIER 11")
                 self.add_command("0 LICENCIER 12")
 
-                
-
-
-
-
-
             self.send_commands()
 
     def add_command(self: "PlayerGameClient", command: str) -> None:
