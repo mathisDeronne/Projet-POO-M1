@@ -21,15 +21,9 @@ py -3.13 -m venv venv
 ```
 python -m pip install --upgrade pip chronobio "chronobio[dev]"
 ```
-```
-.\venv\Scripts\python.exe -m chronobio.game.server -p 12345
-```
-```
-.\venv\Scripts\python.exe -m chronobio.viewer -p 12345
-```
-```
-.\venv\Scripts\python.exe -m '"nom de notre progrmme.PY' -p 12345
-```
+## Lancement
+
+Pour lancer le projet, il faut lancer le fichier **launcher.py**.
 
 ## Règles et sources
 
