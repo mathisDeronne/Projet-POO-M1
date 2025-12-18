@@ -34,6 +34,9 @@ python -m pip install --upgrade pip chronobio "chronobio[dev]"
 ```
 .\venv\Scripts\python.exe -m '"nom de notre progrmme.PY' -p 12345
 ```
+```
+python -m pip install pytest
+```
 ``pour léo : cd C:\Users\admin\PyCharmMiscProject``
 
 
