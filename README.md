@@ -15,8 +15,14 @@ py -3.13 -m venv venv
 
 .\venv\Scripts\Activate.ps1
 
+python.exe -m pip install --upgrade pip
+
 pip install --upgrade chronobio
+
 pip install --upgrade "chronobio[dev]"
+
+python -m pip install --upgrade "chronobio[dev]"
+
 
 .\venv\Scripts\python.exe -m chronobio.game.server -p 12345
 
