@@ -1,7 +1,9 @@
 import argparse
+import json
 from typing import NoReturn
 
 from chronobio.network.client import Client
+
 
 
 class PlayerGameClient(Client):
@@ -10,6 +12,7 @@ class PlayerGameClient(Client):
     ) -> None:
         super().__init__(server_addr, port, username, spectator=False)
         self._commands: list[str] = []
+        self.vente1 = 0
 
     def run(self: "PlayerGameClient") -> NoReturn:
         while True:
@@ -22,16 +25,22 @@ class PlayerGameClient(Client):
                 raise ValueError(f"My farm is not found ({self.username})")
             print(my_farm)
 
+            with open("my_farm.txt", "w", encoding="utf-8") as f:
+             f.write(json.dumps(my_farm, indent=4, ensure_ascii=False))
+
             if game_data["day"] == 0:
                 self.add_command("0 EMPRUNTER 100000")
                 self.add_command("0 ACHETER_CHAMP")
-                self.add_command("0 ACHETER_CHAMP")
-                self.add_command("0 ACHETER_CHAMP")
-                self.add_command("0 ACHETER_TRACTEUR")
-                self.add_command("0 ACHETER_TRACTEUR")
                 self.add_command("0 EMPLOYER")
-                self.add_command("0 EMPLOYER")
-                self.add_command("1 SEMER PATATE 3")
+                self.add_command("1 SEMER PATATE 1")
+            elif my_farm["fields"][0]["content"] != "NONE":
+                if my_farm["fields"][0]["needed_water"] > 0:
+                    self.add_command("1 ARROSER 1")
+                elif game_data["day"] >= self.vente1:
+                    self.add_command("0 VENDRE 1")
+                    self.vente1 = game_data["day"] + 2
+            elif game_data["day"] >= self.vente1:
+                self.add_command("1 SEMER PATATE 1")    
 
             self.send_commands()
 
