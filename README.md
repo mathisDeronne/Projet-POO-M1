@@ -2,7 +2,7 @@
 
 ## Participants
 
-- Guillaume LANDFROID-NAZAC
+- Guillaume LANDFROID-NAZAC 
 - Mathis DÉRONNE
 - Damien ZORZETTO
 - Leo TISSOT
