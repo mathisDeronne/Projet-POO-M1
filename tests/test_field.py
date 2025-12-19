@@ -1,4 +1,4 @@
-from field import Field
+from src.farm.field import Field
 
 
 def test_is_sow():
