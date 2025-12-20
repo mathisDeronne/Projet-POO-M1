@@ -1,5 +1,5 @@
 class Stock:
-    def __init__(self, data: int):
+    def __init__(self, data: dict):
         self.potato = data["POTATO"]
         self.leek = data["LEEK"]
         self.tomato = data["TOMATO"]
@@ -21,20 +21,23 @@ class Stock:
     def have_zucchini(self) -> bool:
         return self.zucchini > 0
 
+    def have_stocks(self) -> bool:
+        return (
+            self.have_potato()
+            or self.have_leek()
+            or self.have_tomato()
+            or self.have_onion()
+            or self.have_zucchini()
+        )
 
-class Soup_factory:
-    def __init__(self, data: int):
+
+class SoupFactory:
+    def __init__(self, data: dict):
         self.days_off = data["days_off"]
         self.stock = Stock(data["stock"])
 
-    def have_days_off(self) -> bool:
+    def is_open(self) -> bool:
         return self.days_off == 0
 
-    def stocks(self) -> bool:
-        return (
-            self.stock.have_potato()
-            or self.stock.have_leek()
-            or self.stock.have_tomato()
-            or self.stock.have_onion()
-            or self.stock.have_zucchini()
-        )
+    def has_stock(self) -> bool:
+        return self.stock.have_stocks()
