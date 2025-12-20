@@ -9,7 +9,7 @@ class Field:
         return self.content == "NONE"
 
     def is_bought(self) -> bool:
-        return self.bought == True
+        return self.bought == True  # noqa: E712
 
     def is_needed_water(self) -> bool:
         if not isinstance(self.needed_water, int):
@@ -18,6 +18,8 @@ class Field:
             return self.needed_water > 0
 
     def is_location_valid(self) -> bool:
+        if not isinstance(self.location, str):
+            return False
         if not self.location.startswith("FIELD"):
             return False
         try:
