@@ -8,7 +8,7 @@ def test_field():
     assert field.is_content_empty() is True
     assert field.is_bought() is True
     assert field.is_needed_water() is True
-    assert field.is_location() is True
+    assert field.is_location_valid() is True
 
 
 def test_field2():
@@ -18,12 +18,32 @@ def test_field2():
     assert field.is_content_empty() is False
     assert field.is_bought() is False
     assert field.is_needed_water() is False
-    assert field.is_location() is False
+    assert field.is_location_valid() is False
 
 
 def test_field3():
     field = Field(
-        {"content": "POTATO", "needed_water": -1, "bought": False, "location": "FIELD7"}
+        {"content": "POTATO", "needed_water": -1, "bought": 12, "location": "FIELD7"}
+    )
+    assert field.is_bought() is False
+    assert field.is_needed_water() is False
+    assert field.is_location_valid() is False
+
+
+def test_field4():
+    field = Field(
+        {
+            "content": "NONE",
+            "needed_water": "True",
+            "bought": True,
+            "location": "FIELD2",
+        }
     )
     assert field.is_needed_water() is False
-    assert field.is_location() is False
+
+
+def test_field5():
+    field = Field(
+        {"content": "POTATO", "needed_water": +4, "bought": True, "location": "FIELD2"}
+    )
+    assert field.is_needed_water() is True

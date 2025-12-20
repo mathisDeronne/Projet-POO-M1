@@ -1,5 +1,5 @@
 class Field:
-    def __init__(self, data: int):
+    def __init__(self, data: dict):
         self.content = data["content"]
         self.needed_water = data["needed_water"]
         self.bought = data["bought"]
@@ -9,12 +9,15 @@ class Field:
         return self.content == "NONE"
 
     def is_bought(self) -> bool:
-        return self.bought is True
+        return self.bought == True
 
     def is_needed_water(self) -> bool:
-        return self.needed_water > 0
+        if not isinstance(self.needed_water, int):
+            return False
+        else:
+            return self.needed_water > 0
 
-    def is_location(self) -> bool:
+    def is_location_valid(self) -> bool:
         if not self.location.startswith("FIELD"):
             return False
         try:
