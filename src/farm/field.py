@@ -6,7 +6,10 @@ class Field:
         self.location = data["location"]
 
     def is_content_empty(self) -> bool:
-        return self.content == "NONE"
+        if not isinstance(self.location, str):
+            return False
+        else:
+            return self.content == "NONE"
 
     def is_bought(self) -> bool:
         return self.bought == True  # noqa: E712
