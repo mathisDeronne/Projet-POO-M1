@@ -5,7 +5,6 @@ from typing import NoReturn
 from chronobio.network.client import Client
 
 
-
 class PlayerGameClient(Client):
     def __init__(
         self: "PlayerGameClient", server_addr: str, port: int, username: str
@@ -26,7 +25,7 @@ class PlayerGameClient(Client):
             print(my_farm)
 
             with open("my_farm.txt", "w", encoding="utf-8") as f:
-             f.write(json.dumps(my_farm, indent=4, ensure_ascii=False))
+                f.write(json.dumps(my_farm, indent=4, ensure_ascii=False))
 
             if game_data["day"] == 0:
                 self.add_command("0 EMPRUNTER 100000")
@@ -40,7 +39,7 @@ class PlayerGameClient(Client):
                     self.add_command("0 VENDRE 1")
                     self.vente1 = game_data["day"] + 2
             elif game_data["day"] >= self.vente1:
-                self.add_command("1 SEMER PATATE 1")    
+                self.add_command("1 SEMER PATATE 1")
 
             self.send_commands()
 
@@ -54,30 +53,31 @@ class PlayerGameClient(Client):
         self._commands.clear()
 
 
+def main(username: str, address: str = "localhost", port: int = 16210) -> None:
+    client = PlayerGameClient(address, port, username)
+    client.run()
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Game client.")
     parser.add_argument(
         "-a",
         "--address",
         type=str,
-        help="name of server on the network",
         default="localhost",
     )
     parser.add_argument(
         "-p",
         "--port",
         type=int,
-        help="location where server listens",
         default=16210,
     )
     parser.add_argument(
         "-u",
         "--username",
         type=str,
-        help="name of the user",
-        default="unknown",
         required=True,
     )
     args = parser.parse_args()
 
-    client = PlayerGameClient(args.address, args.port, args.username).run()
+    main(args.username, args.address, args.port)
