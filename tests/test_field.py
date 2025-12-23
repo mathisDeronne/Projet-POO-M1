@@ -21,20 +21,46 @@ def test_base_field(base_field_data):
 
 
 @mark.parametrize(
-    "content, val1",
+    "content, expected",
     [
         ("NONE", True),
         ("test", False),
+        (123, False),
+        (-123, False),
+        (123.4, False),
+        (-123.4, False),
     ],
 )
-def test_field_content(base_field_data, content, val1):
+def test_field_content(base_field_data, content, expected):
     base_field_data["content"] = content
     field = Field(base_field_data)
-    assert field.is_content_empty() is val1
+    assert field.is_content_empty() is expected
 
 
 @mark.parametrize(
-    "needed_water, val2",
+    "content, expected",
+    [
+        ("POTATO", True),
+        ("LEEK", True),
+        ("TOMATO", True),
+        ("ONION", True),
+        ("ZUCCHINI", True),
+        ("NONE", False),
+        ("test", False),
+        (123, False),
+        (-123, False),
+        (123.4, False),
+        (-123.4, False),
+    ],
+)
+def test_field_full(base_field_data, content, expected):
+    base_field_data["content"] = content
+    field = Field(base_field_data)
+    assert field.is_content_full() is expected
+
+
+@mark.parametrize(
+    "needed_water, expected",
     [
         (1, True),
         (6, True),
@@ -55,14 +81,14 @@ def test_field_content(base_field_data, content, val1):
         ("test", False),
     ],
 )
-def test_field_needed_water(base_field_data, needed_water, val2):
+def test_field_needed_water(base_field_data, needed_water, expected):
     base_field_data["needed_water"] = needed_water
     field = Field(base_field_data)
-    assert field.is_needed_water() is val2
+    assert field.is_needed_water() is expected
 
 
 @mark.parametrize(
-    "bought, val3",
+    "bought, expected",
     [
         (True, True),
         (False, False),
@@ -75,14 +101,14 @@ def test_field_needed_water(base_field_data, needed_water, val2):
         ("test", False),
     ],
 )
-def test_field_bought(base_field_data, bought, val3):
+def test_field_bought(base_field_data, bought, expected):
     base_field_data["bought"] = bought
     field = Field(base_field_data)
-    assert field.is_bought() is val3
+    assert field.is_bought() is expected
 
 
 @mark.parametrize(
-    "location, val4",
+    "location, expected",
     [
         ("FIELD1", True),
         ("FIELD2", True),
@@ -103,7 +129,7 @@ def test_field_bought(base_field_data, bought, val3):
         ("10", False),
     ],
 )
-def test_field_location(base_field_data, location, val4):
+def test_field_location(base_field_data, location, expected):
     base_field_data["location"] = location
     field = Field(base_field_data)
-    assert field.is_location_valid() is val4
+    assert field.is_location_valid() is expected

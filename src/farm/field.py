@@ -1,3 +1,6 @@
+Legume = {"POTATO", "LEEK", "TOMATO", "ONION", "ZUCCHINI"}
+
+
 class Field:
     def __init__(self, data: dict):
         self.content = data["content"]
@@ -6,10 +9,10 @@ class Field:
         self.location = data["location"]
 
     def is_content_empty(self) -> bool:
-        if not isinstance(self.location, str):
-            return False
-        else:
-            return self.content == "NONE"
+        return self.content == "NONE"
+
+    def is_content_full(self) -> bool:
+        return self.content in Legume
 
     def is_bought(self) -> bool:
         return self.bought == True  # noqa: E712
