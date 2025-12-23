@@ -30,9 +30,11 @@ def test_base_soup_factory(base_soup_factory_data):
         (+0, True),
         (5, False),
         ("0", False),
-        (0.0, False),
-        (+0.0, False),
-        (-0.0, False),
+        (0.0, True),
+        (+0.0, True),
+        (-0.0, True),
+        (+0.1, False),
+        (-0.1, False),
     ],
 )
 def test_days_off(base_soup_factory_data, days_off, expected):
@@ -60,10 +62,10 @@ def test_days_off(base_soup_factory_data, days_off, expected):
         ("ZUCCHINI", -200.0, False),
     ],
 )
-def test_have_stock(base_soup_factory_data, vegetable, value, expected):
-    for vegetables in base_soup_factory_data["stock"]:
-        base_soup_factory_data["stock"][vegetables] = 0
+def test_have_stock(base_soup_factory_data, Legume, value, expected):
+    for Legumes in base_soup_factory_data["stock"]:
+        base_soup_factory_data["stock"][Legumes] = 0
 
-    base_soup_factory_data["stock"][vegetable] = value
+    base_soup_factory_data["stock"][Legume] = value
     soup_factory = SoupFactory(base_soup_factory_data)
     assert soup_factory.has_stock() is expected

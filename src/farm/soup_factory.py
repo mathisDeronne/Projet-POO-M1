@@ -7,10 +7,7 @@ class SoupFactory:
         self.stock = Stock(data["stock"])
 
     def is_open(self) -> bool:
-        if not isinstance(self.days_off, int):
-            return False
-        else:
-            return self.days_off == 0
+        return self.days_off == 0
 
     def has_stock(self) -> bool:
         return self.stock.have_stocks()
