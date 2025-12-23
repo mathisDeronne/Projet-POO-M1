@@ -23,7 +23,7 @@ def test_base_soup_factory(base_soup_factory_data):
 
 
 @mark.parametrize(
-    "value, expected",
+    "days_off, expected",
     [
         (0, True),
         (-0, True),
@@ -35,14 +35,14 @@ def test_base_soup_factory(base_soup_factory_data):
         (-0.0, False),
     ],
 )
-def test_days_off(base_soup_factory_data, value, expected):
-    base_soup_factory_data["days_off"] = value
+def test_days_off(base_soup_factory_data, days_off, expected):
+    base_soup_factory_data["days_off"] = days_off
     soup_factory = SoupFactory(base_soup_factory_data)
     assert soup_factory.is_open() is expected
 
 
 @mark.parametrize(
-    "vegetable, value, expected",
+    "Legume, value, expected",
     [
         ("POTATO", 2000, True),
         ("LEEK", 100, True),
