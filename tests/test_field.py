@@ -133,3 +133,61 @@ def test_field_location(base_field_data, location, expected):
     base_field_data["location"] = location
     field = Field(base_field_data)
     assert field.is_location_valid() is expected
+
+
+@fixture
+def base_field_data2():
+    return {
+        "fields": [
+            {
+                "content": "POTATO",
+                "needed_water": 6,
+                "bought": True,
+                "location": "FIELD1",
+            },
+            {
+                "content": "TOMATO",
+                "needed_water": 0,
+                "bought": True,
+                "location": "FIELD2",
+            },
+            {
+                "content": "NONE",
+                "needed_water": 0,
+                "bought": False,
+                "location": "FIELD3",
+            },
+            {
+                "content": "NONE",
+                "needed_water": 5,
+                "bought": False,
+                "location": "FIELD4",
+            },
+            {
+                "content": "NONE",
+                "needed_water": 4,
+                "bought": True,
+                "location": "5",
+            },
+        ]
+    }
+
+
+def test_watered_field_1(base_field_data2):
+    assert Field.watered_field_1(base_field_data2) is True
+
+
+def test_watered_field_2(base_field_data2):
+    assert Field.watered_field_2(base_field_data2) is False
+
+
+def test_watered_field_3(base_field_data2):
+    assert Field.watered_field_3(base_field_data2) is False
+
+
+def test_watered_field_4(base_field_data2):
+    assert Field.watered_field_4(base_field_data2) is False
+
+
+def test_watered_field_5(base_field_data2):
+    assert Field.watered_field_5(base_field_data2) is False
