@@ -1,4 +1,4 @@
-from pytest import fixture, mark
+from pytest import fixture, mark  # type: ignore
 from src.farm.stock_factory import Stock
 
 
