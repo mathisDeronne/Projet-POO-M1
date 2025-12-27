@@ -1,5 +1,5 @@
-from src.stratégie.base import main as run_client
-from src.stratégie.damien_bloucle2 import strategy as strategy_used
+from src.strategy.base import main as run_client
+from src.strategy.damien_bloucle2 import strategy as strategy_used
 
 if __name__ == "__main__":
     run_client(
