@@ -9,13 +9,21 @@ class Field:
         self.location = data["location"]
 
     def is_content_empty(self) -> bool:
-        return self.content == "NONE"
+        return (
+            isinstance(self.content, str)
+            and not isinstance(self.content, bool)
+            and self.content == "NONE"
+        )
 
     def is_content_full(self) -> bool:
-        return self.content in Legume
+        return (
+            isinstance(self.content, str)
+            and not isinstance(self.content, bool)
+            and self.content in Legume
+        )
 
     def is_bought(self) -> bool:
-        return self.bought == True  # noqa: E712
+        return isinstance(self.bought, bool) and self.bought
 
     def is_needed_water(self) -> bool:
         return (
@@ -80,6 +88,18 @@ class Field:
     @staticmethod
     def watered_field_5(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][4])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
+
+    @staticmethod
+    def watered_field(my_farm: dict, index: int) -> bool:
+        if index < 0 or index > 4:
+            return False
+        field = Field(my_farm["fields"][index])
         return (
             field.is_location_valid()
             and field.is_bought()

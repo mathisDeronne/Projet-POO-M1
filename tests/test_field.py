@@ -15,6 +15,7 @@ def base_field_data():
 def test_base_field(base_field_data):
     field = Field(base_field_data)
     assert field.is_content_empty() is False
+    assert field.is_content_full() is True
     assert field.is_bought() is True
     assert field.is_needed_water() is True
     assert field.is_location_valid() is True
@@ -196,3 +197,19 @@ def test_watered_field_4(base_field_data2):
 
 def test_watered_field_5(base_field_data2):
     assert Field.watered_field_5(base_field_data2) is False
+
+
+@mark.parametrize(
+    "index, expected",
+    [
+        (0, True),
+        (1, False),
+        (2, False),
+        (3, False),
+        (4, False),
+        (-1, False),
+        (5, False),
+    ],
+)
+def test_watered_field(base_field_data2, index, expected):
+    assert Field.watered_field(base_field_data2, index) is expected
