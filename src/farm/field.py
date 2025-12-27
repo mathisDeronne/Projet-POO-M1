@@ -18,15 +18,18 @@ class Field:
         return self.bought == True  # noqa: E712
 
     def is_needed_water(self) -> bool:
-        if not isinstance(self.needed_water, int):
-            return False
-        else:
-            return self.needed_water > 0
+        return (
+            isinstance(self.needed_water, int)
+            and not isinstance(self.needed_water, bool)
+            and self.needed_water > 0
+        )
 
     def is_location_valid(self) -> bool:
-        if not isinstance(self.location, str):
-            return False
-        if not self.location.startswith("FIELD"):
+        if (
+            not isinstance(self.location, str)
+            or isinstance(self.location, bool)
+            or not self.location.startswith("FIELD")
+        ):
             return False
         try:
             num = int(self.location.replace("FIELD", ""))
@@ -34,6 +37,7 @@ class Field:
             return False
         return 1 <= num <= 5
 
+    @staticmethod
     def watered_field_1(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][0])
         return (
@@ -43,6 +47,7 @@ class Field:
             and field.is_needed_water()
         )
 
+    @staticmethod
     def watered_field_2(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][1])
         return (
@@ -52,6 +57,7 @@ class Field:
             and field.is_needed_water()
         )
 
+    @staticmethod
     def watered_field_3(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][2])
         return (
@@ -61,6 +67,7 @@ class Field:
             and field.is_needed_water()
         )
 
+    @staticmethod
     def watered_field_4(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][3])
         return (
@@ -70,6 +77,7 @@ class Field:
             and field.is_needed_water()
         )
 
+    @staticmethod
     def watered_field_5(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][4])
         return (

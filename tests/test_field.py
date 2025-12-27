@@ -1,4 +1,4 @@
-from pytest import fixture, mark
+from pytest import fixture, mark  # type: ignore
 from src.farm.field import Field
 
 
@@ -24,11 +24,15 @@ def test_base_field(base_field_data):
     "content, expected",
     [
         ("NONE", True),
+        ("POTATO", False),
+        ("LEEK", False),
+        ("TOMATO", False),
+        ("ONION", False),
+        ("ZUCCHINI", False),
         ("test", False),
         (123, False),
         (-123, False),
         (123.4, False),
-        (-123.4, False),
     ],
 )
 def test_field_content(base_field_data, content, expected):
@@ -50,7 +54,6 @@ def test_field_content(base_field_data, content, expected):
         (123, False),
         (-123, False),
         (123.4, False),
-        (-123.4, False),
     ],
 )
 def test_field_full(base_field_data, content, expected):
@@ -79,6 +82,8 @@ def test_field_full(base_field_data, content, expected):
         ("+5", False),
         ("-12", False),
         ("test", False),
+        (False, False),
+        (True, False),
     ],
 )
 def test_field_needed_water(base_field_data, needed_water, expected):
@@ -118,15 +123,15 @@ def test_field_bought(base_field_data, bought, expected):
         ("FIELD6", False),
         ("FIELD0", False),
         ("FIELD-2", False),
-        ("1", False),
         ("FIELD", False),
         ("test", False),
-        ("test2", False),
-        ("True", False),
+        ("1", False),
         (10, False),
         (10.10, False),
-        (-10, False),
-        ("10", False),
+        (0, False),
+        (1, False),
+        (False, False),
+        (True, False),
     ],
 )
 def test_field_location(base_field_data, location, expected):
