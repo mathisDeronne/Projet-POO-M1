@@ -6,21 +6,17 @@ class Tractors:
         self.location = data["location"]
         self.id = data["id"]
 
-    def id_is(self) -> bool:
+    def id_valid(self) -> bool:
         return (
-            isinstance(self.id, int) and not isinstance(self.id, bool) and self.id > 0
+            isinstance(self.id, int) and not isinstance(self.id, bool) and self.id >= 0
         )
 
-    # a réparé
     def is_location_valid(self) -> bool:
-        if (
-            not isinstance(self.location, str)
-            or isinstance(self.location, bool)
-            or not self.location in locations
-        ):
-            return False
-        try:
-            num = int(self.location.replace("FIELD", ""))
-        except ValueError:
-            return False
-        return 1 <= num <= 5
+        return (
+            self.location in locations
+            and isinstance(self.location, str)
+            and not isinstance(self.location, bool)
+        )
+
+    def tractor_valid(self) -> bool:
+        return self.id_valid() and self.is_location_valid()

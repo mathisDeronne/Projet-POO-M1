@@ -12,8 +12,9 @@ def base_data():
 
 def test_base_tractors(base_data):
     tractor = Tractors(base_data)
-    assert tractor.id_is() is True
+    assert tractor.id_valid() is True
     assert tractor.is_location_valid() is True
+    assert tractor.tractor_valid() is True
 
 
 @mark.parametrize(
