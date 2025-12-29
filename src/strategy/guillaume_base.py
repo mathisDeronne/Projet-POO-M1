@@ -5,27 +5,17 @@ from src.farm.employees import Employee
 
 def strategy(client, game_data: dict, my_farm: dict):
     soup_factory = SoupFactory(my_farm["soup_factory"])
+    field = Field(my_farm["fields"][1])
     day = game_data["day"]
 
     if day == 0:
         client.add_command("0 EMPRUNTER 100000")
-        client.add_command("0 ACHETER_CHAMP")
-        client.add_command("0 ACHETER_CHAMP")
-        client.add_command("0 ACHETER_CHAMP")
-        client.add_command("0 ACHETER_CHAMP")
-        client.add_command("0 ACHETER_CHAMP")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("0 EMPLOYER")
-        client.add_command("1 SEMER PATATE 1")
+        for _ in range(5):
+            client.add_command("0 ACHETER_CHAMP")
+        for _ in range(11):
+            client.add_command("0 EMPLOYER")
+        if field.is_content_empty():
+            client.add_command("1 SEMER PATATE 1")
         client.add_command("2 ARROSER 1")
         client.add_command("3 ARROSER 1")
         client.add_command("4 ARROSER 1")
