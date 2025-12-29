@@ -1,25 +1,109 @@
 from src.farm.soup_factory import SoupFactory
 from src.farm.field import Field
-
-
-# a voir si faut mettre dans SoupFactory ??
-def made_soup(my_farm: dict) -> bool:
-    soup_factory = SoupFactory(my_farm["soup_factory"])
-    return soup_factory.is_open() and soup_factory.has_stock()
-
-
-# a voir si faut mettre dans Field ??
-def watered(my_farm: dict) -> int:
-    results = {}
-    for fram_data in my_farm["fields"]:
-        field = Field(fram_data)
-
-        if field.is_location_valid() and field.is_bought() and field.is_needed_water():
-            results[field.location] = field.needed_water
-
-    return results
+from src.farm.employees import Employee
 
 
 def strategy(client, game_data: dict, my_farm: dict):
-    if made_soup(my_farm):
-        client.add_command("1 CUISINER")
+    soup_factory = SoupFactory(my_farm["soup_factory"])
+    day = game_data["day"]
+
+    if day == 0:
+        client.add_command("0 EMPRUNTER 100000")
+        client.add_command("0 ACHETER_CHAMP")
+        client.add_command("0 ACHETER_CHAMP")
+        client.add_command("0 ACHETER_CHAMP")
+        client.add_command("0 ACHETER_CHAMP")
+        client.add_command("0 ACHETER_CHAMP")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("0 EMPLOYER")
+        client.add_command("1 SEMER PATATE 1")
+        client.add_command("2 ARROSER 1")
+        client.add_command("3 ARROSER 1")
+        client.add_command("4 ARROSER 1")
+        client.add_command("5 ARROSER 1")
+        client.add_command("6 ARROSER 1")
+        client.add_command("7 ARROSER 1")
+        client.add_command("8 ARROSER 1")
+        client.add_command("9 ARROSER 1")
+        client.add_command("10 ARROSER 1")
+        client.add_command("11 ARROSER 1")
+
+    if day == 1:
+        client.add_command("0 EMPLOYER")
+        client.add_command("1 SEMER POIREAU 2")
+        client.add_command("2 ARROSER 2")
+        client.add_command("3 ARROSER 2")
+        client.add_command("4 ARROSER 2")
+        client.add_command("5 ARROSER 2")
+        client.add_command("6 ARROSER 2")
+        client.add_command("7 ARROSER 2")
+        client.add_command("8 ARROSER 2")
+        client.add_command("9 ARROSER 2")
+        client.add_command("10 ARROSER 2")
+        client.add_command("11 ARROSER 2")
+        client.add_command("0 ACHETER_TRACTEUR")
+        client.add_command("12 STOCKER 1 1")
+
+    if day == 2:
+        client.add_command("1 SEMER TOMATE 3")
+        client.add_command("2 ARROSER 3")
+        client.add_command("3 ARROSER 3")
+        client.add_command("4 ARROSER 3")
+        client.add_command("5 ARROSER 3")
+        client.add_command("6 ARROSER 3")
+        client.add_command("7 ARROSER 3")
+        client.add_command("8 ARROSER 3")
+        client.add_command("9 ARROSER 3")
+        client.add_command("10 ARROSER 3")
+        client.add_command("11 ARROSER 3")
+        client.add_command("0 VENDRE 2")
+
+    if day == 3:
+        client.add_command("1 SEMER COURGETTE 4")
+        client.add_command("2 ARROSER 4")
+        client.add_command("3 ARROSER 4")
+        client.add_command("4 ARROSER 4")
+        client.add_command("5 ARROSER 4")
+        client.add_command("6 ARROSER 4")
+        client.add_command("7 ARROSER 4")
+        client.add_command("8 ARROSER 4")
+        client.add_command("9 ARROSER 4")
+        client.add_command("10 ARROSER 4")
+        client.add_command("11 ARROSER 4")
+        if soup_factory.made_soup():
+            client.add_command("12 CUISINER")
+
+    if day == 61:
+        client.add_command("1 SEMER OIGNON 5")
+        client.add_command("2 ARROSER 5")
+        client.add_command("3 ARROSER 5")
+        client.add_command("4 ARROSER 5")
+        client.add_command("5 ARROSER 5")
+        client.add_command("6 ARROSER 5")
+        client.add_command("7 ARROSER 5")
+        client.add_command("8 ARROSER 5")
+        client.add_command("9 ARROSER 5")
+        client.add_command("10 ARROSER 5")
+        client.add_command("11 ARROSER 5")
+        client.add_command("0 ARROSER 5")
+        client.add_command("0 LICENCIER 1")
+        client.add_command("0 LICENCIER 2")
+        client.add_command("0 LICENCIER 3")
+        client.add_command("0 LICENCIER 4")
+        client.add_command("0 LICENCIER 5")
+        client.add_command("0 LICENCIER 6")
+        client.add_command("0 LICENCIER 7")
+        client.add_command("0 LICENCIER 8")
+        client.add_command("0 LICENCIER 9")
+        client.add_command("0 LICENCIER 10")
+        client.add_command("0 LICENCIER 11")
+        client.add_command("0 LICENCIER 12")
