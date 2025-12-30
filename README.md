@@ -23,11 +23,17 @@ Le projet repose sur le jeu **Chronobio**, un jeu de stratégie automatisé où 
 - [Contributeurs](#contributeurs)
 - [Règles et sources](#règles-et-sources)
 
+---
+
 ## Présentation du projet
 **Chronobio** est un jeu de programmation dans lequel chaque joueur contrôle une ferme.
 Le joueur doit automatiser ses décisions (achat de champs, plantation, gestion des employés, etc.) via un programme Python.
 
+---
+
 ## Objectifs
+
+---
 
 ## Installation
 ### Environnement virtuel
@@ -41,6 +47,8 @@ py -3.13 -m venv venv
 python -m pip install --upgrade pip 
 python -m pip install chronobio "chronobio[dev]"
 ```
+
+---
 
 ## Lancement du jeu
 
@@ -57,7 +65,11 @@ python.exe -m chronobio.viewer -p 12345
 python.exe -m main
 ```
 
+---
+
 ## Stratégie
+
+---
 
 ## Tests
 ### Installation
@@ -68,6 +80,8 @@ python -m pip install pytest pytest-cov
 ```powershell
 pytest --cov=src --cov-report=term-missing
 ```
+
+---
 
 ## Structure du projet
 ```
@@ -99,6 +113,8 @@ Projet-POO-M1/
 └── README.md
 ```
 
+---
+
 ## Contributeurs
 
 - Guillaume LANDFROID-NAZAC 
@@ -106,6 +122,8 @@ Projet-POO-M1/
 - Damien ZORZETTO
 - Leo TISSOT
 - Edwin LE ROYER
+
+---
 
 ## Règles et sources
 
