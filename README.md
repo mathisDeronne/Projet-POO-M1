@@ -1,82 +1,105 @@
-# Voici le repo du rendu de projet de POO du groupe Les Potes Âgés
+# Projet de POO  - Chronobio -
+![Coverage](coverage.svg)
+
+## Groupe : Les Potes Âgés
+Ce dépôt contient le rendu du projet de Programmation Orientée Objet (POO) réalisé en M1.
+
+Le projet repose sur le jeu **Chronobio**, un jeu de stratégie automatisé où l’objectif est de gérer une ferme de manière optimale à l’aide de scripts Python.
+
+---
 
 ## Sommaire
-- [Chronobio](#chronobio)
-- [Install](#install)
-    - [Installation de l'environement](#installation-de-lenvironement)
-    - [Installation du jeu](#installation-du-jeu)
-- [Lancer le jeux](#lancer-le-jeux)
-- [Tests](#tests)
+- [Présentation du projet](#présentation-du-projet)
+- [Objectifs](#objectifs)
+- [Installation](#installation)
+    - [Environnement virtuel](#environnement-virtuel)
+    - [Installation de Chronobio](#installation-de-chronobio)
+- [Lancement du jeu](#lancement-du-jeu)
+- [Stratégie](#stratégie)
+- [Tests](#tesa)
+    - [Installation](#installation-1)
+    - [Lancer les tests avec couverture](#lancer-les-tests-avec-couverture)
 - [Structure du projet](#structure-du-projet)
-- [Contributeur](#contributeur)
+- [Contributeurs](#contributeurs)
+- [Règles et sources](#règles-et-sources)
 
-## Chronobio
-Chronobio est un jeu de programmation pour gérer une ferme, produire des légumes, les vendre, faire des coupe et devenir le meilleur producteur de légume dans un environnement concurrentiel et dynamique.
+## Présentation du projet
+**Chronobio** est un jeu de programmation dans lequel chaque joueur contrôle une ferme.
+Le joueur doit automatiser ses décisions (achat de champs, plantation, gestion des employés, etc.) via un programme Python.
 
+## Objectifs
 
-## Install 
-
-```
-py -3.13 -m venv venv
-```
-```
-.\venv\Scripts\Activate.ps1
-```
-```
-python -m pip install --upgrade pip chronobio "chronobio[dev]"
-```
-```
-.\venv\Scripts\python.exe -m chronobio.game.server -p 12345
-```
-```
-.\venv\Scripts\python.exe -m chronobio.viewer -p 12345
-```
-```
-.\venv\Scripts\python.exe -m '"nom de notre progrmme.PY' -p 12345
-```
-```
-python -m pip install pytest
-```
-``pour léo : cd C:\Users\admin\PyCharmMiscProject``
-
-
-### Installation de l'environement
-
+## Installation
+### Environnement virtuel
 ```powershell
-# Créer et activer un environnement virtuel
-python -m venv venv
-# Windows
+py -3.13 -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
-### Installation du jeu
-
-```python
-python -m pip install --upgrade pip chronobio "chronobio[dev]"
+### Installation de Chronobio
+```powershell
+python -m pip install --upgrade pip 
+python -m pip install chronobio "chronobio[dev]"
 ```
 
-## Lancer le jeux
+## Lancement du jeu
 
-Pour lancer le projet, il faut lancer le fichier **launcher.py**.
+Vous pouvez lancer le jeu de deux manières :  
+
+1. **En utilisant le fichier `launcher.py`**.  
+```powershell
+python launcher.py
+```
+2. **Ou en exécutant directement les commandes suivantes** dans l'environnement virtuel précédemment créé :
+```powershell
+python.exe -m chronobio.game.server -p 12345
+python.exe -m chronobio.viewer -p 12345
+python.exe -m main
+```
+
+## Stratégie
 
 ## Tests
-Pour testé les code.
+### Installation
+```powershell
+python -m pip install pytest pytest-cov
+```
+### Lancer les tests avec couverture
+```powershell
+pytest --cov=src --cov-report=term-missing
+```
 
 ## Structure du projet
 ```
 Projet-POO-M1/
-├── tests/              # Tests Unitaires
-│ ├── init.py
-│ └── test_player.py
-├── .gitignore          # Git Ignore
-├── my_farm.txt         # Json Model
-├── README.md           # Doc
-└── main.py             # Programme
+├── .github
+├── src/
+│   ├── farm/
+│   │   ├── __init__.py
+│   │   ├── employees.py
+│   │   ├── field.py
+│   │   ├── soup_factory.py
+│   │   ├── stock_factory.py
+│   │   └── tractors.py
+│   └── strategie/
+│   │   ├── __init__.py
+│   │   └── base.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_employees.py
+│   ├── test_field.py
+│   ├── test_soup_factory.py
+│   ├── test_stock_factory.py
+│   └── test_tractors.py
+├── .coveragerc
+├── .gitignore
+├── coverage.svg
+├── launcher.py
+├── main.py
+└── README.md
 ```
-`` en dév -bloucle.py et -local_base.py ``
 
-
-## Contributeur
+## Contributeurs
 
 - Guillaume LANDFROID-NAZAC 
 - Mathis DÉRONNE
@@ -84,7 +107,20 @@ Projet-POO-M1/
 - Leo TISSOT
 - Edwin LE ROYER
 
-
 ## Règles et sources
 
-https://github.com/vpoulailleau/chronobio
+- Dépôt officiel du jeu Chronobio : https://github.com/vpoulailleau/chronobio
+
+### note 
+Pour faire un "coverage.svg"
+```powershell
+pip install pytest pytest-cov coverage
+```
+```powershell
+pytest --cov=src --cov-report=xml
+```
+```powershell
+coverage-badge -o coverage.svg
+```
+et vous aurrais fait l'image pour lavoir dans le readme a pensé a push si vous voulais voir le changement.
+
