@@ -8,92 +8,24 @@ def strategy(client, game_data: dict, my_farm: dict):
     field = Field(my_farm["fields"][1])
     day = game_data["day"]
 
-    if day == 0:
-        client.add_command("0 EMPRUNTER 100000")
-        for _ in range(5):
-            client.add_command("0 ACHETER_CHAMP")
-        for _ in range(11):
-            client.add_command("0 EMPLOYER")
-        if field.is_content_empty():
-            client.add_command("1 SEMER PATATE 1")
-        client.add_command("2 ARROSER 1")
-        client.add_command("3 ARROSER 1")
-        client.add_command("4 ARROSER 1")
-        client.add_command("5 ARROSER 1")
-        client.add_command("6 ARROSER 1")
-        client.add_command("7 ARROSER 1")
-        client.add_command("8 ARROSER 1")
-        client.add_command("9 ARROSER 1")
-        client.add_command("10 ARROSER 1")
-        client.add_command("11 ARROSER 1")
-
-    if day == 1:
-        client.add_command("0 EMPLOYER")
-        client.add_command("1 SEMER POIREAU 2")
-        client.add_command("2 ARROSER 2")
-        client.add_command("3 ARROSER 2")
-        client.add_command("4 ARROSER 2")
-        client.add_command("5 ARROSER 2")
-        client.add_command("6 ARROSER 2")
-        client.add_command("7 ARROSER 2")
-        client.add_command("8 ARROSER 2")
-        client.add_command("9 ARROSER 2")
-        client.add_command("10 ARROSER 2")
-        client.add_command("11 ARROSER 2")
-        client.add_command("0 ACHETER_TRACTEUR")
-        client.add_command("12 STOCKER 1 1")
-
-    if day == 2:
-        client.add_command("1 SEMER TOMATE 3")
-        client.add_command("2 ARROSER 3")
-        client.add_command("3 ARROSER 3")
-        client.add_command("4 ARROSER 3")
-        client.add_command("5 ARROSER 3")
-        client.add_command("6 ARROSER 3")
-        client.add_command("7 ARROSER 3")
-        client.add_command("8 ARROSER 3")
-        client.add_command("9 ARROSER 3")
-        client.add_command("10 ARROSER 3")
-        client.add_command("11 ARROSER 3")
-        client.add_command("0 VENDRE 2")
-
-    if day == 3:
-        client.add_command("1 SEMER COURGETTE 4")
-        client.add_command("2 ARROSER 4")
-        client.add_command("3 ARROSER 4")
-        client.add_command("4 ARROSER 4")
-        client.add_command("5 ARROSER 4")
-        client.add_command("6 ARROSER 4")
-        client.add_command("7 ARROSER 4")
-        client.add_command("8 ARROSER 4")
-        client.add_command("9 ARROSER 4")
-        client.add_command("10 ARROSER 4")
-        client.add_command("11 ARROSER 4")
-        if soup_factory.made_soup():
-            client.add_command("12 CUISINER")
-
-    if day == 61:
-        client.add_command("1 SEMER OIGNON 5")
-        client.add_command("2 ARROSER 5")
-        client.add_command("3 ARROSER 5")
-        client.add_command("4 ARROSER 5")
-        client.add_command("5 ARROSER 5")
-        client.add_command("6 ARROSER 5")
-        client.add_command("7 ARROSER 5")
-        client.add_command("8 ARROSER 5")
-        client.add_command("9 ARROSER 5")
-        client.add_command("10 ARROSER 5")
-        client.add_command("11 ARROSER 5")
-        client.add_command("0 ARROSER 5")
-        client.add_command("0 LICENCIER 1")
-        client.add_command("0 LICENCIER 2")
-        client.add_command("0 LICENCIER 3")
-        client.add_command("0 LICENCIER 4")
-        client.add_command("0 LICENCIER 5")
-        client.add_command("0 LICENCIER 6")
-        client.add_command("0 LICENCIER 7")
-        client.add_command("0 LICENCIER 8")
-        client.add_command("0 LICENCIER 9")
-        client.add_command("0 LICENCIER 10")
-        client.add_command("0 LICENCIER 11")
-        client.add_command("0 LICENCIER 12")
+    ## Jour 1
+    # j'achette champs 1 et 2
+    # j'achette 6 employer
+    # emplyer 1 qui plante
+    # les 5 emplyer suivant qui arrose
+    ## jour 2
+    # les 5 emplyer arrose
+    # je vend le champs 1
+    ## jour 3
+    # emplyer 1 vas au champs 2 est plante
+    # les 5 emplyer se déplace au champs 2 est arrose
+    ## jour 4
+    # les 5 emplyer arrose
+    # je vend le champs 2
+    ## jour 5
+    # emplyer 1 vas au champs 1 est plante
+    # les 5 emplyer se déplace au champs 1 est arrose
+    ## jour 6
+    # les 5 emplyer arrose
+    # je vend le champs 1
+    ## ...
