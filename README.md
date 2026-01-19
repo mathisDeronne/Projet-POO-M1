@@ -6,7 +6,7 @@
 Ce dépôt contient le rendu du projet de Programmation Orientée Objet (POO) réalisé en M1.
 
 Le projet repose sur le jeu **Chronobio**, un jeu de stratégie automatisé où l'objectif est de gérer une ferme de manière optimale à l'aide de scripts Python.
-
+ 
 ---
 
 ## Sommaire
