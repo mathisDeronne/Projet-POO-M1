@@ -15,6 +15,13 @@ class Field:
             and self.content == "NONE"
         )
 
+    def is_content_full(self) -> bool:
+        return (
+            isinstance(self.content, str)
+            and not isinstance(self.content, bool)
+            and self.content in Legume
+        )
+
     def is_bought(self) -> bool:
         return isinstance(self.bought, bool) and self.bought
 
