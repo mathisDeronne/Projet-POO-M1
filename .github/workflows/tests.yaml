@@ -1,11 +1,7 @@
 name: Run Python Tests
 
 # Déclenche le workflow sur push ou pull request uniquement sur la branche fram-bot
-on:
-  push:
-    branches: [ fram-bot ]
-  pull_request:
-    branches: [ fram-bot ]
+on: [push, pull_request]
 
 jobs:
   test:
