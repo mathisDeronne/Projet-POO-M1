@@ -24,7 +24,7 @@ def strategy(client, game_data: dict, my_farm: dict):
 
     cycle_day = (day - 1) % 21
 
-    if cycle_day in (0, 9, 12):
+    if cycle_day in (0, 5, 10):
         client.add_command("1 SEMER PATATE 3")
         for i in range(2, 12):
             client.add_command(f"{i} ARROSER 3")
