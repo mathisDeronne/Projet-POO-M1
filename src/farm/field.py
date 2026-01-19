@@ -49,3 +49,65 @@ class Field:
         return (
             self.is_bought() and self.is_content_full() and not self.is_needed_water()
         )
+
+    @staticmethod
+    def watered_field_1(my_farm: dict) -> bool:
+        field = Field(my_farm["fields"][0])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
+
+    @staticmethod
+    def watered_field_2(my_farm: dict) -> bool:
+        field = Field(my_farm["fields"][1])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
+
+    @staticmethod
+    def watered_field_3(my_farm: dict) -> bool:
+        field = Field(my_farm["fields"][2])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
+
+    @staticmethod
+    def watered_field_4(my_farm: dict) -> bool:
+        field = Field(my_farm["fields"][3])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
+
+    @staticmethod
+    def watered_field_5(my_farm: dict) -> bool:
+        field = Field(my_farm["fields"][4])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
+
+    @staticmethod
+    def watered_field(my_farm: dict, index: int) -> bool:
+        if index < 0 or index > 4:
+            return False
+        field = Field(my_farm["fields"][index])
+        return (
+            field.is_location_valid()
+            and field.is_bought()
+            and field.is_content_full()
+            and field.is_needed_water()
+        )
