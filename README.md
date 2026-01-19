@@ -1,10 +1,11 @@
-# Projet de POO  - Chronobio -
+# Projet de POO - Chronobio -
+
 ![Coverage](coverage.svg)
 
 ## Groupe : Les Potes Âgés
 Ce dépôt contient le rendu du projet de Programmation Orientée Objet (POO) réalisé en M1.
 
-Le projet repose sur le jeu **Chronobio**, un jeu de stratégie automatisé où l’objectif est de gérer une ferme de manière optimale à l’aide de scripts Python.
+Le projet repose sur le jeu **Chronobio**, un jeu de stratégie automatisé où l'objectif est de gérer une ferme de manière optimale à l'aide de scripts Python.
 
 ---
 
@@ -16,7 +17,7 @@ Le projet repose sur le jeu **Chronobio**, un jeu de stratégie automatisé où 
     - [Installation de Chronobio](#installation-de-chronobio)
 - [Lancement du jeu](#lancement-du-jeu)
 - [Stratégie](#stratégie)
-- [Tests](#tesa)
+- [Tests](#tests)
     - [Installation](#installation-1)
     - [Lancer les tests avec couverture](#lancer-les-tests-avec-couverture)
 - [Structure du projet](#structure-du-projet)
@@ -129,8 +130,8 @@ Projet-POO-M1/
 
 - Dépôt officiel du jeu Chronobio : https://github.com/vpoulailleau/chronobio
 
-### note 
-Pour faire un "coverage.svg"
+### Note 
+Pour générer un `coverage.svg` :
 ```powershell
 pip install pytest pytest-cov coverage
 ```
@@ -140,12 +141,13 @@ pytest --cov=src --cov-report=xml
 ```powershell
 coverage-badge -o coverage.svg
 ```
-et vous aurrais fait l'image pour lavoir dans le readme a pensé a push si vous voulais voir le changement.
+N'oubliez pas de faire un push si vous voulez voir les changements dans le README.
 
-autre commande
+Autres commandes :
 ```
 pytest --cov=src --cov-report=term-missing
 ```
 ```
 pytest --cov --cov-branch
 ```
+
