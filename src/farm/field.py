@@ -61,16 +61,6 @@ class Field:
         )
 
     @staticmethod
-    def watered_field_2(my_farm: dict) -> bool:
-        field = Field(my_farm["fields"][1])
-        return (
-            field.is_location_valid()
-            and field.is_bought()
-            and field.is_content_full()
-            and field.is_needed_water()
-        )
-
-    @staticmethod
     def watered_field_3(my_farm: dict) -> bool:
         field = Field(my_farm["fields"][2])
         return (
