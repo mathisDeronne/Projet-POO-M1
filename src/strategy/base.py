@@ -1,5 +1,6 @@
 import argparse
 from typing import NoReturn
+import json
 
 from chronobio.network.client import Client
 
@@ -36,6 +37,9 @@ class PlayerGameClient(Client):
             else:
                 raise ValueError(f"My farm is not found ({self.username})")
             print(my_farm)
+
+            with open("my_farm.txt", "w", encoding="utf-8") as f:
+                f.write(json.dumps(game_data, indent=4, ensure_ascii=False))
 
             self.strategy(self, game_data, my_farm)
             self.send_commands()
