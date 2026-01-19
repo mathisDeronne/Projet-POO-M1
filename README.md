@@ -142,3 +142,10 @@ coverage-badge -o coverage.svg
 ```
 et vous aurrais fait l'image pour lavoir dans le readme a pensé a push si vous voulais voir le changement.
 
+autre commande
+```
+pytest --cov=src --cov-report=term-missing
+```
+```
+pytest --cov --cov-branch
+```
