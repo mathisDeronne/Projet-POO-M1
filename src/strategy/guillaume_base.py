@@ -2,10 +2,6 @@ from src.farm.field import Field
 
 
 def strategy(client, game_data: dict, my_farm: dict):
-    fields = {
-        1: Field(my_farm["fields"][1]),
-        2: Field(my_farm["fields"][2]),
-    }
     field_1 = Field(my_farm["fields"][1])
     field_2 = Field(my_farm["fields"][2])
 
