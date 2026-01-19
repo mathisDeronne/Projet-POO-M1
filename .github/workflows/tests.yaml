@@ -34,7 +34,6 @@ jobs:
         pytest tests --maxfail=1 --disable-warnings -v
         pytest
         TEST_RESULT=$?
-      run:
         if [ $TEST_RESULT -ne 0 ]; then
           echo ""
           echo "❌ PUSH REFUSÉ"
