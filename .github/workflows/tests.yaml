@@ -36,3 +36,18 @@ jobs:
     - name: Run tests
       run: |
         pytest tests --maxfail=1 --disable-warnings -v
+        TEST_RESULT=$?
+      run:
+        if [ $TEST_RESULT -ne 0 ]; then
+          echo ""
+          echo "❌ PUSH REFUSÉ"
+          echo "➡️  Un ou plusieurs tests ont échoué."
+          echo "➡️  Corrige les erreurs avant de pousser ton code."
+          echo ""
+          exit 1
+        fi
+
+        echo ""
+        echo "✅ Tous les tests sont passés avec succès."
+        echo "🚀 Push autorisé"
+        echo ""
