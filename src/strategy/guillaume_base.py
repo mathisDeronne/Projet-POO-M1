@@ -4,10 +4,13 @@ from src.farm.field import Field
 def strategy(client, game_data: dict, my_farm: dict):
     field_1 = Field(my_farm["fields"][1])
     field_2 = Field(my_farm["fields"][2])
+    fields = {
+        1: Field(my_farm["fields"][0]),
+        2: Field(my_farm["fields"][1]),
+    }
 
     day = game_data["day"]
 
-    # Jour 0 : initialisation
     if day == 0:
         if not field_1.is_bought():
             client.add_command("0 ACHETER_CHAMP")
@@ -34,5 +37,7 @@ def strategy(client, game_data: dict, my_farm: dict):
 
     else:
         field_id = 1 if ((day - 1) // 2) % 2 == 0 else 2
+        field = fields[field_id]
 
-        client.add_command(f"0 VENDRE {field_id}")
+        if field.is_ready_to_sell():
+            client.add_command(f"0 VENDRE {field_id}")
