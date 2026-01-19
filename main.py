@@ -9,14 +9,14 @@ if __name__ == "__main__":
         "--address",
         type=str,
         help="name of server on the network",
-        default="localhost",
+        default="127.0.0.1",
     )
     parser.add_argument(
         "-p",
         "--port",
         type=int,
         help="location where server listens",
-        default=16210,
+        default=12345,
     )
     args = parser.parse_args()
 
