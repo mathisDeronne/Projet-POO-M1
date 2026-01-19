@@ -15,11 +15,6 @@ class Employee:
             isinstance(self.id, int) and not isinstance(self.id, bool) and self.id >= 0
         )
 
-    def is_location_valid(self) -> bool:
-        return (
-            self.location in locations
-            and isinstance(self.location, str)
-            and not isinstance(self.location, bool)
         )
 
     def is_salary(self) -> bool:
