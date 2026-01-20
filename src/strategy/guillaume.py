@@ -1,6 +1,7 @@
 from src.farm.field import Field
 from src.farm.soup_factory import SoupFactory
-
+group1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+group2 = [15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 def strategy(client, game_data: dict, my_farm: dict):
     field_1 = Field(my_farm["fields"][0])
@@ -36,17 +37,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         field_id = 1 if (day // 2) % 2 == 0 else 2
 
         client.add_command(f"1 SEMER PATATE {field_id}")
-        client.add_command(f"2 ARROSER {field_id}")
-        client.add_command(f"3 ARROSER {field_id}")
-        client.add_command(f"4 ARROSER {field_id}")
-        client.add_command(f"5 ARROSER {field_id}")
-        client.add_command(f"6 ARROSER {field_id}")
-        client.add_command(f"7 ARROSER {field_id}")
-        client.add_command(f"8 ARROSER {field_id}")
-        client.add_command(f"9 ARROSER {field_id}")
-        client.add_command(f"10 ARROSER {field_id}")
-        client.add_command(f"11 ARROSER {field_id}")
-
+        client.add_command(f"{group1} ARROSER {field_id}")
     else:
         field_id = 1 if ((day - 1) // 2) % 2 == 0 else 2
         field = fields[field_id]
@@ -57,30 +48,12 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day == 5:
         field_id = 3
         client.add_command(f"14 SEMER PATATE {field_id}")
-        client.add_command(f"15 ARROSER {field_id}")
-        client.add_command(f"16 ARROSER {field_id}")
-        client.add_command(f"17 ARROSER {field_id}")
-        client.add_command(f"18 ARROSER {field_id}")
-        client.add_command(f"19 ARROSER {field_id}")
-        client.add_command(f"20 ARROSER {field_id}")
-        client.add_command(f"21 ARROSER {field_id}")
-        client.add_command(f"22 ARROSER {field_id}")
-        client.add_command(f"23 ARROSER {field_id}")
-        client.add_command(f"24 ARROSER {field_id}")
+        client.add_command(f"{group2} ARROSER {field_id}")
 
     if day >= 10 and day % 2 == 0:
         field_id = 3
         client.add_command(f"14 SEMER PATATE {field_id}")
-        client.add_command(f"15 ARROSER {field_id}")
-        client.add_command(f"16 ARROSER {field_id}")
-        client.add_command(f"17 ARROSER {field_id}")
-        client.add_command(f"18 ARROSER {field_id}")
-        client.add_command(f"19 ARROSER {field_id}")
-        client.add_command(f"20 ARROSER {field_id}")
-        client.add_command(f"21 ARROSER {field_id}")
-        client.add_command(f"22 ARROSER {field_id}")
-        client.add_command(f"23 ARROSER {field_id}")
-        client.add_command(f"24 ARROSER {field_id}")
+        client.add_command(f"{group2} ARROSER {field_id}")
 
     if field_3.is_ready_to_sell():
         client.add_command("12 STOCKER 3 1")
