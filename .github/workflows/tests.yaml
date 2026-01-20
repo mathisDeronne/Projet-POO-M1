@@ -8,6 +8,7 @@ on:
 jobs:
   pytest:
     runs-on: ubuntu-latest
+    name: pytest
 
     steps:
       # 1️⃣ Récupérer le code
