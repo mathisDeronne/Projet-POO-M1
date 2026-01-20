@@ -19,6 +19,8 @@ def strategy(client, game_data: dict, my_farm: dict):
     soup_factory = SoupFactory(my_farm["soup_factory"])
 
     LEGUMES = ["PATATE", "POIREAU", "TOMATE", "OIGNON", "COURGETTE"]
+    LEGUMES2 = ["COURGETTE", "PATATE", "POIREAU", "TOMATE", "OIGNON"]
+    LEGUMES3 = ["OIGNON", "COURGETTE", "PATATE", "POIREAU", "TOMATE"]
 
     day = game_data["day"]
 
@@ -136,7 +138,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day >= 6 and day % 2 == 0:
         field_id = 4
         plant_index = day // 2
-        legume = LEGUMES[plant_index % len(LEGUMES)]
+        legume = LEGUMES2[plant_index % len(LEGUMES2)]
         client.add_command(f"26 SEMER {legume} {field_id}")
         client.add_command(f"27 ARROSER {field_id}")
         client.add_command(f"28 ARROSER {field_id}")
@@ -153,7 +155,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day >= 10 and day % 2 == 0:
         field_id = 5
         plant_index = day // 2
-        legume = LEGUMES[plant_index % len(LEGUMES)]
+        legume = LEGUMES3[plant_index % len(LEGUMES3)]
         client.add_command(f"41 SEMER {legume} {field_id}")
         client.add_command(f"42 ARROSER {field_id}")
         client.add_command(f"43 ARROSER {field_id}")
