@@ -12,19 +12,15 @@ jobs:
 
     steps:
       # 1️⃣ Récupérer le code
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       # 2️⃣ Installer Python (version STABLE)
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
       # 3️⃣ Installer uv
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v7
 
       # 5️⃣ Lancer pytest
-      - name: pytest
-        run: uv run pytest
+      - run: uv run pytest
