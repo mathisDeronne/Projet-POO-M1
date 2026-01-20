@@ -17,7 +17,9 @@ def strategy(client, game_data: dict, my_farm: dict):
     }
     soup_factory = SoupFactory(my_farm["soup_factory"])
 
-    LEGUMES = ["PATATE", "POIREAU", "TOMATE", "OIGNON", "COURGETTE"]
+    LEGUMES1 = ["PATATE", "POIREAU", "TOMATE", "OIGNON", "COURGETTE"]
+    LEGUMES2 = ["POIREAU", "TOMATE", "OIGNON", "COURGETTE", "PATATE"]
+    LEGUMES3 = ["TOMATE", "OIGNON", "COURGETTE", "PATATE", "POIREAU"]
 
     day = game_data["day"]
 
@@ -45,7 +47,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day % 2 == 0:
         field_id = 1 if (day // 2) % 2 == 0 else 2
         plant_index = day // 2
-        legume = LEGUMES[plant_index % len(LEGUMES)]
+        legume = LEGUMES1[plant_index % len(LEGUMES1)]
 
         client.add_command(f"1 SEMER {legume} {field_id}")
         client.add_command(f"2 ARROSER {field_id}")
@@ -109,7 +111,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day >= 5 and day % 2 == 0:
         field_id = 3
         plant_index = day // 2
-        legume = LEGUMES[plant_index % len(LEGUMES)]
+        legume = LEGUMES1[plant_index % len(LEGUMES1)]
         client.add_command(f"14 SEMER {legume} {field_id}")
         client.add_command(f"15 ARROSER {field_id}")
         client.add_command(f"16 ARROSER {field_id}")
@@ -128,7 +130,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day >= 6 and day % 2 == 0:
         field_id = 4
         plant_index = day // 2
-        legume = LEGUMES[plant_index % len(LEGUMES)]
+        legume = LEGUMES2[plant_index % len(LEGUMES2)]
         client.add_command(f"26 SEMER {legume} {field_id}")
         client.add_command(f"27 ARROSER {field_id}")
         client.add_command(f"28 ARROSER {field_id}")
@@ -144,7 +146,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day >= 10 and day % 2 == 0:
         field_id = 5
         plant_index = day // 2
-        legume = LEGUMES[plant_index % len(LEGUMES)]
+        legume = LEGUMES3[plant_index % len(LEGUMES3)]
         client.add_command(f"41 SEMER {legume} {field_id}")
         client.add_command(f"42 ARROSER {field_id}")
         client.add_command(f"43 ARROSER {field_id}")
