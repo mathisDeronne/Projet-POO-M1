@@ -1,0 +1,13 @@
+[project]
+name = "projet-poo-m1"
+version = "0.1.0"
+description = "Projet POO M1"
+requires-python = ">=3.10"
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+]
+
