@@ -6,8 +6,8 @@ requires-python = ">=3.10"
 
 dependencies = []
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
-  "pytest",
+    "pytest>=9.0.2",
 ]
 
