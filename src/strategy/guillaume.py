@@ -31,7 +31,7 @@ def strategy(client, game_data: dict, my_farm: dict):
             if not field.is_bought():
                 client.add_command("0 ACHETER_CHAMP")
 
-        for _ in range(55):
+        for _ in range(56):
             client.add_command("0 EMPLOYER")
 
         client.add_command("13 SEMER PATATE 5")
@@ -42,6 +42,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("53 SEMER PATATE 5")
         client.add_command("54 SEMER PATATE 5")
         client.add_command("55 SEMER PATATE 5")
+        client.add_command("56 SEMER PATATE 5")
         client.add_command("0 ACHETER_TRACTEUR")
         client.add_command("0 ACHETER_TRACTEUR")
         client.add_command("0 ACHETER_TRACTEUR")
@@ -190,6 +191,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("53 CUISINER")
         client.add_command("54 CUISINER")
         client.add_command("55 CUISINER")
+        client.add_command("56 CUISINER")
         ABS = 1
 
     if ABS == 0:
