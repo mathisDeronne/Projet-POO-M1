@@ -27,7 +27,7 @@ def strategy(client, game_data: dict, my_farm: dict):
             if not field.is_bought():
                 client.add_command("0 ACHETER_CHAMP")
 
-        for _ in range(40):
+        for _ in range(55):
             client.add_command("0 EMPLOYER")
 
         client.add_command("13 SEMER PATATE 5")
@@ -35,6 +35,10 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("38 SEMER PATATE 5")
         client.add_command("39 SEMER PATATE 5")
         client.add_command("40 SEMER PATATE 5")
+        client.add_command("53 SEMER PATATE 5")
+        client.add_command("54 SEMER PATATE 5")
+        client.add_command("55 SEMER PATATE 5")
+        client.add_command("0 ACHETER_TRACTEUR")
         client.add_command("0 ACHETER_TRACTEUR")
         client.add_command("0 ACHETER_TRACTEUR")
 
@@ -87,6 +91,18 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("35 ARROSER 4")
         client.add_command("36 ARROSER 4")
 
+        client.add_command("41 SEMER PATATE 5")
+        client.add_command("42 ARROSER 5")
+        client.add_command("43 ARROSER 5")
+        client.add_command("44 ARROSER 5")
+        client.add_command("45 ARROSER 5")
+        client.add_command("46 ARROSER 5")
+        client.add_command("47 ARROSER 5")
+        client.add_command("48 ARROSER 5")
+        client.add_command("49 ARROSER 5")
+        client.add_command("50 ARROSER 5")
+        client.add_command("51 ARROSER 5")
+
     if day == 5:
         client.add_command("37 STOCKER 4 2")
 
@@ -106,6 +122,9 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"23 ARROSER {field_id}")
         client.add_command(f"24 ARROSER {field_id}")
 
+    if day == 7:
+        client.add_command("52 STOCKER 5 3")
+
     if day >= 6 and day % 2 == 0:
         field_id = 4
         plant_index = day // 2
@@ -122,11 +141,30 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"35 ARROSER {field_id}")
         client.add_command(f"36 ARROSER {field_id}")
 
+    if day >= 10 and day % 2 == 0:
+        field_id = 5
+        plant_index = day // 2
+        legume = LEGUMES[plant_index % len(LEGUMES)]
+        client.add_command(f"41 SEMER {legume} {field_id}")
+        client.add_command(f"42 ARROSER {field_id}")
+        client.add_command(f"43 ARROSER {field_id}")
+        client.add_command(f"44 ARROSER {field_id}")
+        client.add_command(f"45 ARROSER {field_id}")
+        client.add_command(f"46 ARROSER {field_id}")
+        client.add_command(f"47 ARROSER {field_id}")
+        client.add_command(f"48 ARROSER {field_id}")
+        client.add_command(f"49 ARROSER {field_id}")
+        client.add_command(f"50 ARROSER {field_id}")
+        client.add_command(f"51 ARROSER {field_id}")
+
     if field_3.is_ready_to_sell():
         client.add_command("12 STOCKER 3 1")
 
     if day >= 10 and field_4.is_ready_to_sell():
         client.add_command("37 STOCKER 4 2")
+
+    if day >= 10 and field_5.is_ready_to_sell():
+        client.add_command("52 STOCKER 5 3")
 
     if soup_factory.made_soup():
         client.add_command("13 CUISINER")
@@ -134,3 +172,6 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("38 CUISINER")
         client.add_command("39 CUISINER")
         client.add_command("40 CUISINER")
+        client.add_command("53 CUISINER")
+        client.add_command("54 CUISINER")
+        client.add_command("55 CUISINER")
