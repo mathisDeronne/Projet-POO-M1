@@ -8,27 +8,19 @@ on:
 jobs:
   pytest:
     runs-on: ubuntu-latest
+    name: pytest
 
     steps:
       # 1️⃣ Récupérer le code
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       # 2️⃣ Installer Python (version STABLE)
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
       # 3️⃣ Installer uv
-      - name: Install uv
-        uses: astral-sh/setup-uv@v6
-
-      # 4️⃣ Installer les dépendances depuis uv.lock
-      - name: Sync dependencies
-        run: uv pip sync --system uv.lock
+      - uses: astral-sh/setup-uv@v7
 
       # 5️⃣ Lancer pytest
-      - name: Run tests
-        run: |
-          PYTHONPATH=. pytest -q
+      - run: uv run pytest
