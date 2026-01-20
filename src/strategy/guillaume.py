@@ -3,6 +3,7 @@ from src.farm.soup_factory import SoupFactory
 
 
 def strategy(client, game_data: dict, my_farm: dict):
+    ABS = 0  # Anti Blocking System
     field_1 = Field(my_farm["fields"][0])
     field_2 = Field(my_farm["fields"][1])
     field_3 = Field(my_farm["fields"][2])
@@ -17,19 +18,20 @@ def strategy(client, game_data: dict, my_farm: dict):
     }
     soup_factory = SoupFactory(my_farm["soup_factory"])
 
-    LEGUMES1 = ["PATATE", "POIREAU", "TOMATE", "OIGNON", "COURGETTE"]
-    LEGUMES2 = ["POIREAU", "TOMATE", "OIGNON", "COURGETTE", "PATATE"]
-    LEGUMES3 = ["TOMATE", "OIGNON", "COURGETTE", "PATATE", "POIREAU"]
+    LEGUMES = ["PATATE", "POIREAU", "TOMATE", "OIGNON", "COURGETTE"]
+    LEGUMES2 = ["COURGETTE", "PATATE", "POIREAU", "TOMATE", "OIGNON"]
+    LEGUMES3 = ["OIGNON", "COURGETTE", "PATATE", "POIREAU", "TOMATE"]
 
     day = game_data["day"]
 
     if day == 0:
         client.add_command("0 EMPRUNTER 100000")
+        ABS = 1
         for field in fields.values():
             if not field.is_bought():
                 client.add_command("0 ACHETER_CHAMP")
 
-        for _ in range(55):
+        for _ in range(56):
             client.add_command("0 EMPLOYER")
 
         client.add_command("13 SEMER PATATE 5")
@@ -40,6 +42,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("53 SEMER PATATE 5")
         client.add_command("54 SEMER PATATE 5")
         client.add_command("55 SEMER PATATE 5")
+        client.add_command("56 SEMER PATATE 5")
         client.add_command("0 ACHETER_TRACTEUR")
         client.add_command("0 ACHETER_TRACTEUR")
         client.add_command("0 ACHETER_TRACTEUR")
@@ -47,7 +50,7 @@ def strategy(client, game_data: dict, my_farm: dict):
     if day % 2 == 0:
         field_id = 1 if (day // 2) % 2 == 0 else 2
         plant_index = day // 2
-        legume = LEGUMES1[plant_index % len(LEGUMES1)]
+        legume = LEGUMES[plant_index % len(LEGUMES)]
 
         client.add_command(f"1 SEMER {legume} {field_id}")
         client.add_command(f"2 ARROSER {field_id}")
@@ -60,6 +63,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"9 ARROSER {field_id}")
         client.add_command(f"10 ARROSER {field_id}")
         client.add_command(f"11 ARROSER {field_id}")
+        ABS = 1
 
     else:
         field_id = 1 if ((day - 1) // 2) % 2 == 0 else 2
@@ -67,6 +71,7 @@ def strategy(client, game_data: dict, my_farm: dict):
 
         if field.is_ready_to_sell():
             client.add_command(f"0 VENDRE {field_id}")
+            ABS = 1
 
     if day == 1:
         client.add_command("14 SEMER PATATE 3")
@@ -107,11 +112,12 @@ def strategy(client, game_data: dict, my_farm: dict):
 
     if day == 5:
         client.add_command("37 STOCKER 4 2")
+        ABS = 1
 
     if day >= 5 and day % 2 == 0:
         field_id = 3
         plant_index = day // 2
-        legume = LEGUMES1[plant_index % len(LEGUMES1)]
+        legume = LEGUMES[plant_index % len(LEGUMES)]
         client.add_command(f"14 SEMER {legume} {field_id}")
         client.add_command(f"15 ARROSER {field_id}")
         client.add_command(f"16 ARROSER {field_id}")
@@ -123,9 +129,11 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"22 ARROSER {field_id}")
         client.add_command(f"23 ARROSER {field_id}")
         client.add_command(f"24 ARROSER {field_id}")
+        ABS = 1
 
     if day == 7:
         client.add_command("52 STOCKER 5 3")
+        ABS = 1
 
     if day >= 6 and day % 2 == 0:
         field_id = 4
@@ -142,6 +150,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"34 ARROSER {field_id}")
         client.add_command(f"35 ARROSER {field_id}")
         client.add_command(f"36 ARROSER {field_id}")
+        ABS = 1
 
     if day >= 10 and day % 2 == 0:
         field_id = 5
@@ -158,15 +167,19 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"49 ARROSER {field_id}")
         client.add_command(f"50 ARROSER {field_id}")
         client.add_command(f"51 ARROSER {field_id}")
+        ABS = 1
 
     if field_3.is_ready_to_sell():
         client.add_command("12 STOCKER 3 1")
+        ABS = 1
 
     if day >= 10 and field_4.is_ready_to_sell():
         client.add_command("37 STOCKER 4 2")
+        ABS = 1
 
     if day >= 10 and field_5.is_ready_to_sell():
         client.add_command("52 STOCKER 5 3")
+        ABS = 1
 
     if soup_factory.made_soup():
         client.add_command("13 CUISINER")
@@ -177,3 +190,10 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command("53 CUISINER")
         client.add_command("54 CUISINER")
         client.add_command("55 CUISINER")
+        client.add_command("56 CUISINER")
+        ABS = 1
+
+    if ABS == 0:
+        client.add_command(
+            "0 EMPRUNTER 0"
+        )  # emprunte 0€ si aucune commande n'a été envoyée pour éviter le timeout
