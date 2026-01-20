@@ -16,20 +16,22 @@ def strategy(client, game_data: dict, my_farm: dict):
         5: field_5,
     }
     soup_factory = SoupFactory(my_farm["soup_factory"])
-    fields = [Field(f) for f in my_farm["fields"]]
+
     LEGUMES = ["PATATE", "POIREAU", "TOMATE", "OIGNON", "COURGETTE"]
+
     day = game_data["day"]
 
     if day == 0:
         client.add_command("0 EMPRUNTER 1000")
-        for field in fields:
+        for field in fields.values():
             if not field.is_bought():
                 client.add_command("0 ACHETER_CHAMP")
 
-        for _ in range(24):
+        for _ in range(25):
             client.add_command("0 EMPLOYER")
 
         client.add_command("13 SEMER PATATE 5")
+        client.add_command("25 SEMER PATATE 4")
         client.add_command("0 ACHETER_TRACTEUR")
 
     if day % 2 == 0:
@@ -71,6 +73,7 @@ def strategy(client, game_data: dict, my_farm: dict):
         client.add_command(f"22 ARROSER {field_id}")
         client.add_command(f"23 ARROSER {field_id}")
         client.add_command(f"24 ARROSER {field_id}")
+        client.add_command("25 SEMER PATATE 5")
 
     if day >= 10 and day % 2 == 0:
         field_id = 3
@@ -93,3 +96,4 @@ def strategy(client, game_data: dict, my_farm: dict):
 
     if soup_factory.made_soup():
         client.add_command("13 CUISINER")
+        client.add_command("25 CUISINER")
