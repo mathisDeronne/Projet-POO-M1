@@ -179,26 +179,6 @@ def base_field_data2():
     }
 
 
-def test_watered_field_1(base_field_data2):
-    assert Field.watered_field_1(base_field_data2) is True
-
-
-def test_watered_field_2(base_field_data2):
-    assert Field.watered_field_2(base_field_data2) is False
-
-
-def test_watered_field_3(base_field_data2):
-    assert Field.watered_field_3(base_field_data2) is False
-
-
-def test_watered_field_4(base_field_data2):
-    assert Field.watered_field_4(base_field_data2) is False
-
-
-def test_watered_field_5(base_field_data2):
-    assert Field.watered_field_5(base_field_data2) is False
-
-
 @mark.parametrize(
     "index, expected",
     [
