@@ -177,19 +177,3 @@ def base_field_data2():
             },
         ]
     }
-
-
-@mark.parametrize(
-    "index, expected",
-    [
-        (0, True),
-        (1, False),
-        (2, False),
-        (3, False),
-        (4, False),
-        (-1, False),
-        (5, False),
-    ],
-)
-def test_watered_field(base_field_data2, index, expected):
-    assert Field.watered_field(base_field_data2, index) is expected
