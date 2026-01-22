@@ -1,8 +1,0 @@
-[run]
-omit =
-    src/strategy/guillaume_base.py
-    src/strategy/leo_base2.py
-    src/strategy/damien_bloucle2.py
-    src\strategy\base.py 
-    src/strategy/guillaume_base.py
-    src/strategy/*
