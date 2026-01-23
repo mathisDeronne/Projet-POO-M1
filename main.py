@@ -1,5 +1,5 @@
 from src.strategy.base import main as run_client
-from src.strategy.guillaume import strategy as strategy_used
+from src.strategy.farm_strategy import strategy as strategy_used
 import argparse
 
 if __name__ == "__main__":
