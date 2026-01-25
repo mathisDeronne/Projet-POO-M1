@@ -86,6 +86,7 @@ Les deux premiers champs sont utilisés en boucle pour planter, récolter puis v
 Les trois champs suivants ont un rôle différent. Ils ne servent pas à la vente directe, mais à produire des ressources destinées au stock de la fabrique. Ces ressources sont utilisées pour alimenter la soup factory, permettant une production continue de soupe, qui apporte une valeur plus importante à moyen terme.
 
 Cette stratégie repose donc sur deux idées principales : garantir une stabilité économique immédiate grâce aux ventes directes, et mettre en place une chaîne de production autonome pour la soupe. Cette organisation permet de simplifier la logique du programme tout en rendant la gestion de la ferme plus efficace.
+
 ---
 
 ## Tests
