@@ -146,25 +146,3 @@ Projet-POO-M1/
 ## Règles et sources
 
 - Dépôt officiel du jeu Chronobio : https://github.com/vpoulailleau/chronobio
-
-### Note 
-Pour générer un `coverage.svg` :
-```powershell
-pip install pytest pytest-cov coverage
-```
-```powershell
-pytest --cov=src --cov-report=xml
-```
-```powershell
-coverage-badge -o coverage.svg
-```
-N'oubliez pas de faire un push si vous voulez voir les changements dans le README.
-
-Autres commandes :
-```
-pytest --cov=src --cov-report=term-missing
-```
-```
-pytest --cov --cov-branch
-```
-
