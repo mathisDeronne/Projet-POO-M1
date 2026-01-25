@@ -114,6 +114,7 @@ Projet-POO-M1/
 │   │   └── tractors.py
 │   └── strategie/
 │   │   ├── __init__.py
+│   │   ├── farm_strategy.py
 │   │   └── base.py
 ├── tests/
 │   ├── __init__.py
