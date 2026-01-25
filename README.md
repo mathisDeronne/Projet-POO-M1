@@ -34,6 +34,16 @@ Le joueur doit automatiser ses décisions (achat de champs, plantation, gestion 
 
 ## Objectifs
 
+Ce projet avait plusieurs objectifs pédagogiques et techniques.
+
+Il nous a permis de mettre en pratique les concepts fondamentaux de la Programmation Orientée Objet : la séparation des responsabilités, la factorisation et l’écriture de tests unitaires.
+
+Nous devions également concevoir une architecture de projet claire, lisible et maintenable, capable d’évoluer facilement. Le travail en équipe sur un même dépôt Git faisait partie intégrante du projet : organisation, répartition des tâches, gestion des versions et coordination du code.
+
+L’objectif était aussi d’automatiser une stratégie de jeu à l’aide de scripts Python et de garantir la fiabilité du programme grâce à une suite de tests avec mesure de couverture.
+
+Ce projet nous a surtout permis de passer d’une compréhension théorique de la POO à une mise en œuvre concrète dans un cas pratique proche d’un projet réel, tout en développant notre capacité à travailler en équipe.
+
 ---
 
 ## Installation
@@ -69,7 +79,13 @@ python.exe -m main
 ---
 
 ## Stratégie
+La stratégie mise en place repose sur une organisation précise des champs afin de séparer deux objectifs : générer rapidement de l’argent et alimenter la production de soupe.
 
+Les deux premiers champs sont utilisés en boucle pour planter, récolter puis vendre directement les cultures. Cette boucle permet d’assurer une rentrée d’argent constante et rapide, nécessaire au fonctionnement et au développement de la ferme.
+
+Les trois champs suivants ont un rôle différent. Ils ne servent pas à la vente directe, mais à produire des ressources destinées au stock de la fabrique. Ces ressources sont utilisées pour alimenter la soup factory, permettant une production continue de soupe, qui apporte une valeur plus importante à moyen terme.
+
+Cette stratégie repose donc sur deux idées principales : garantir une stabilité économique immédiate grâce aux ventes directes, et mettre en place une chaîne de production autonome pour la soupe. Cette organisation permet de simplifier la logique du programme tout en rendant la gestion de la ferme plus efficace.
 ---
 
 ## Tests
