@@ -1,6 +1,6 @@
 # Projet de POO - Chronobio -
 
-![Coverage](coverage.svg)
+![Coverage](coverage.svg) 
 
 ## Groupe : Les Potes Âgés
 Ce dépôt contient le rendu du projet de Programmation Orientée Objet (POO) réalisé en M1.
